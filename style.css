@@ -112,7 +112,7 @@ li {
   border: 0px solid;
   border-radius: 5px;
   box-shadow: 2px 2px 2px var(--color-gray);
-  width: 100px;
+  width: fit-content;
   padding-inline-start: 2px;
   padding-inline: 2px;
 }

@@ -1,11 +1,12 @@
 const allTags = [
-  "🏠 Дом", // Домашние дела, уборка, ремонт
-  "💼 Работа", // Рабочие задачи, проекты, встречи
-  "🎓 Учёба", // Обучение, курсы, домашние задания
-  "👨‍👩‍👧‍👦 Семья", // Семейные дела, дети, родители
-  "👥 Личное", // Личные дела, саморазвитие
-  "🛒 Покупки", // Шоппинг, продукты, быт
-  "🏥 Здоровье", // Врачи, спорт, лекарства
+  { value: "work", label: "💼 Работа", color: "#4CAF50" },
+  { value: "study", label: "🎓 Учёба", color: "#2196F3" },
+  { value: "home", label: "🏠 Дом", color: "#FF9800" },
+  { value: "health", label: "🏥 Здоровье", color: "#F44336" },
+  { value: "personal", label: "👥 Личное", color: "#9C27B0" },
+  { value: "shopping", label: "🛒 Покупки", color: "#607D8B" },
+  { value: "finance", label: "💸 Финансы", color: "#795548" },
+  { value: "travel", label: "✈️ Путешествия", color: "#00BCD4" },
 ];
 
 let tasks = [];
@@ -16,13 +17,13 @@ function initializeTestData() {
       id: 0,
       text: "Купить молоко",
       completed: false,
-      tags: "Дом",
+      tags: "home",
     },
     {
       id: 1,
       text: "Выполнить тестовое задание",
       completed: false,
-      tags: "Работа",
+      tags: "work",
     },
   ];
 }
@@ -142,12 +143,13 @@ function createTaskElement(task) {
   });
   divSettins.appendChild(selectTag);
 
-  allTags.forEach((tagName) => {
+  allTags.forEach((tagObj) => {
     const option = document.createElement("option");
-    option.value = tagName;
-    option.textContent = tagName;
+    option.value = tagObj.value;
+    option.textContent = tagObj.label;
+    option.style = `color: ${tagObj.color}`;
 
-    if (task.tags == tagName) {
+    if (task.tags == tagObj.label) {
       option.selected = true;
     }
 
