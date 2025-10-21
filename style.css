@@ -1,0 +1,114 @@
+:root {
+  --text-sm: 0.6rem;
+  --text-base: 1rem;
+  --text-4xl: 2.5rem;
+
+  --padding-sm: 8px;
+  --padding-base: 16px;
+  --padding-m: 24px;
+  --padding-xl: 32px;
+
+  --background-color: #333333;
+  --color-white: #ffffff;
+  --color-gray: #969696;
+  --color-red: #af0000;
+  --color-green: #14af00;
+
+  --color-tag-1: rgba(29, 147, 0, 0.3);
+  --color-tag-2: rgba(147, 0, 0, 0.3);
+  --color-tag-3: rgba(0, 42, 147, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: "Roboto", sans-serif;
+}
+
+li {
+  list-style: none;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: var(--padding-base);
+}
+
+.content__title {
+  font-size: var(--text-4xl);
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: var(--padding-base);
+}
+
+.content__input {
+  width: 70%;
+  height: 42px;
+  border: 0px solid var(--color-white);
+  border-radius: 5px;
+  padding-inline-start: var(--padding-sm);
+  margin-bottom: var(--padding-base);
+}
+
+.content__btn {
+  margin-bottom: var(--padding-m);
+  padding: var(--padding-sm) var(--padding-base);
+  background-color: var(--color-white);
+  border: 0 solid var(--color-white);
+  border-radius: 10px;
+}
+
+.content__btn:hover {
+  background-color: var(--color-gray);
+}
+
+.tasks-container {
+  width: 70%;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-white);
+  height: 45px;
+  border: 0 solid;
+  border-radius: 5px;
+  gap: 16px;
+  padding-left: var(--padding-base);
+  margin-top: var(--padding-sm);
+}
+
+.tags {
+  display: flex;
+  gap: var(--padding-sm);
+  margin-left: auto;
+  padding-right: 16px;
+}
+
+.tag {
+  padding: var(--padding-sm) var(--padding-sm);
+  font-size: var(--text-sm);
+  border: 0 solid;
+  border-radius: 5px;
+}
+
+.del-button {
+  background-image: url(img/Delete.svg);
+  background-color: transparent;
+  width: 15px;
+  height: 15px;
+  background-repeat: no-repeat;
+  border: 0 solid;
+  margin-bottom: auto;
+  margin-left: auto;
+}
+
+.del-button:hover {
+  cursor: pointer;
+}
