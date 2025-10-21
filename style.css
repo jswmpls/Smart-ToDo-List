@@ -84,18 +84,12 @@ li {
   margin-top: var(--padding-sm);
 }
 
-.tags {
+.tasks-container__settins {
   display: flex;
-  gap: var(--padding-sm);
+  flex-direction: column;
+  gap: 5px;
   margin-left: auto;
-  padding-right: 16px;
-}
-
-.tag {
-  padding: var(--padding-sm) var(--padding-sm);
-  font-size: var(--text-sm);
-  border: 0 solid;
-  border-radius: 5px;
+  padding-right: 5px;
 }
 
 .del-button {
@@ -111,4 +105,14 @@ li {
 
 .del-button:hover {
   cursor: pointer;
+}
+
+.tag {
+  background-color: transparent;
+  border: 0px solid;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px var(--color-gray);
+  width: 100px;
+  padding-inline-start: 2px;
+  padding-inline: 2px;
 }

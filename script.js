@@ -1,3 +1,5 @@
+const allTags = ["Работа", "Учёба", "Личное", "Дом"];
+
 let tasks = [];
 // Для тестирования
 function initializeTestData() {
@@ -6,11 +8,13 @@ function initializeTestData() {
       id: 0,
       text: "Купить молоко",
       completed: false,
+      tags: "Дом",
     },
     {
       id: 1,
       text: "Выполнить тестовое задание",
       completed: false,
+      tags: "Работа",
     },
   ];
 }
@@ -37,9 +41,11 @@ function addTask() {
       id: nextId,
       text: inputTask.value,
       completed: false,
+      tags: allTags[0],
     });
 
     nextId++;
+    inputTask.value = "";
     console.log(`Задача ${inputTask.value} добавлена`);
     renderTasks();
   } else {
@@ -74,6 +80,14 @@ function toggleTaskCompletion(taskId) {
   }
 }
 
+function updateTaskTag(taskId, valueTag) {
+  const taskIndex = tasks.findIndex((task) => task.id == taskId);
+  if (taskIndex != -1) {
+    tasks[taskIndex].tags = valueTag;
+    console.log(tasks);
+  }
+}
+
 // Создание HTML элементов для задачи
 function createTaskElement(task) {
   // li
@@ -99,16 +113,10 @@ function createTaskElement(task) {
     title.style = "text-decoration: none";
   }
 
-  // tags
-  // const ulTags = document.createElement('ul');
-  // ulTags.classList.add('tags');
-  // for (tag of task.tags) {
-  //     const liTags = document.createElement('li');
-  //     liTags.classList.add('tag');
-  //     liTags.textContent = tag;
-  //     ulTags.appendChild(liTags);
-  // }
-  // li.appendChild(ulTags)
+  // divSettins
+  const divSettins = document.createElement("div");
+  divSettins.classList.add("tasks-container__settins");
+  li.appendChild(divSettins);
 
   // Button delete
   const del = document.createElement("button");
@@ -116,7 +124,27 @@ function createTaskElement(task) {
   del.addEventListener("click", function () {
     delTask(task.id);
   });
-  li.appendChild(del);
+  divSettins.appendChild(del);
+
+  // Select
+  const selectTag = document.createElement("select");
+  selectTag.classList.add("tag");
+  selectTag.addEventListener("change", function () {
+    updateTaskTag(task.id, this.value);
+  });
+  divSettins.appendChild(selectTag);
+
+  allTags.forEach((tagName) => {
+    const option = document.createElement("option");
+    option.value = tagName;
+    option.textContent = tagName;
+
+    if (task.tags == tagName) {
+      option.selected = true;
+    }
+
+    selectTag.appendChild(option);
+  });
 
   return li;
 }
